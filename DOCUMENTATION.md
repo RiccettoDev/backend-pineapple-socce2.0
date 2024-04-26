@@ -115,15 +115,73 @@ e no browser na url: http://localhost:3333/ será exibido:
 
 - Com este comando abrimos uma ferramente do prisma para visualizar nossas tabelas de bancos de dados no browser.
 
+---
+
+<br>
+
 ### --> Criando validações na 1° rota
 
 ``npm install zod``
 
 - Usamos este comando para instalar a biblioteca **Zod**, apara configurarmos as validações de corpo de requisição dos nossos métodos.
 
+---
+
+<br>
+
 ### --> Primeira rota com validações feita no arquivo **server.ts** 
 
 - Realizamos as configurações como demonstra a imagem à seguir:
 
-![validações-primeira-rota](/images/4.PNG)
+![server.ts](/images/4.PNG)
 
+---
+
+<br>
+
+### --> Validações com fastify-type-provider-zod
+
+``npm install fastify-type-provider-zod``
+
+- Com este comando instalamos a biblioteca fastify-type-provider-zod que define outros parametros de validação, não somento do corpo, mas também cabeçalhos, respostas e etc. 
+
+- Definimos a nova estrutura do arquivo **server.ts** assim:
+
+![server.ts](/images/5.PNG)
+
+---
+
+<br>
+
+### --> Separando as rotas em arquivos diferentes
+
+- começamos retirando alguns trechos de código do arquivo server.ts, para isolarmos em arquivos separados com export que será reutilizado em outros arquivos de rotas:
+
+![prisma.ts](/images/6.PNG)
+
+- Fazemos o mesmo com este trecho de código:
+
+![fastifyInstance](/images/7.PNG)
+
+- Onde este trecho ``const app = fastify()`` é do tipo FastifyInstance. Adicionando ele como parametro de uma função da nova rota separada em outro arquivo como mostra a figura abaixo:
+
+![create-user](/images/8.PNG)
+
+- Na imagem acima faltou apenas o **async** após o export.
+
+- Depois devemos adicionar no server.ts o registro desta função de nova rota com este trecho de código:
+``app.register(createUser)``
+
+- Ficando assim o nosso novo **server.ts**:
+
+<br>
+
+![server.ts](/images/9.PNG)
+
+- E assim a nossa primeira rota em um arquivo separado:
+
+<br>
+
+![create-user](/images/10.PNG)
+
+### --> Dai por diante apenas seguir com as novas rotas...
