@@ -4,7 +4,9 @@ import {
   validatorCompiler
 } from 'fastify-type-provider-zod'
 
-import cors from "@fastify/cors"
+// Importe o módulo fastify-cors sem especificar tipos
+// @ts-ignore
+import cors from 'fastify-cors'
 
 import { createUser } from './routes/create-user'
 import { listUsers } from './routes/list-user'
@@ -17,6 +19,7 @@ const start = async () => {
     app.setValidatorCompiler(validatorCompiler)
     app.setSerializerCompiler(serializerCompiler)
 
+    // Registre o plugin de CORS sem especificar tipos
     await app.register(cors)
 
     await app.register(createUser)
