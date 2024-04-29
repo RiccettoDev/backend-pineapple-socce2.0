@@ -11,22 +11,20 @@ export async function getUserById(app: FastifyInstance) {
       }),
       response: {
         200: z.object({
-          user: z.object({
-            id: z.string().uuid(),
-            name: z.string(),
-            surname: z.string(),
-            email: z.string(),
-            password: z.string(),
-            stars: z.string(),
-            position: z.string(),
-            force: z.string(),
-            attack: z.string(),
-            defense: z.string(),
-            goals: z.string(),
-            assistance: z.string(),
-            status: z.string(),
-            img: z.string()
-          })
+          id: z.string().uuid(),
+          name: z.string(),
+          surname: z.string(),
+          email: z.string(),
+          password: z.string(),
+          stars: z.string(),
+          position: z.string(),
+          force: z.string(),
+          attack: z.string(),
+          defense: z.string(),
+          goals: z.string(),
+          assistance: z.string(),
+          status: z.string(),
+          img: z.string()
         }),
         404: z.object({
           message: z.string()
@@ -45,7 +43,7 @@ export async function getUserById(app: FastifyInstance) {
         return reply.status(404).send({ message: "User not found" });
       }
 
-      return reply.send({ user });
+      return reply.send(user); // Retorna os dados do usuário diretamente
     } catch (error) {
       console.error("Error fetching user:", error);
       return reply.status(500).send({ message: "Internal Server Error" });
