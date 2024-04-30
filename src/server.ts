@@ -4,8 +4,7 @@ import {
   validatorCompiler
 } from 'fastify-type-provider-zod';
 
-// @ts-ignore
-import cors from 'fastify/cors'; // Importe o módulo fastify-cors sem especificar tipos
+import cors from '@fastify/cors'; // Caminho de importação correto com verificação de tipo
 
 import { createUser } from './routes/create-user';
 import { listUsers } from './routes/list-user';
@@ -18,10 +17,10 @@ const start = async () => {
     app.setValidatorCompiler(validatorCompiler);
     app.setSerializerCompiler(serializerCompiler);
 
-    // Registre o plugin de CORS sem especificar tipos
+    // Registre o plugin CORS com opções
     await app.register(cors, {
-      origin: 'https://frontend-pineapple-soccer2-0.vercel.app', // Adicione o domínio da Vercel às origens permitidas
-      methods: ['GET', 'POST', 'PUT', 'DELETE'] // Adicione os métodos HTTP permitidos, se necessário
+      origin: 'https://frontend-pineapple-soccer2-0.vercel.app',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'] // Adicione métodos permitidos se necessário
     });
 
     await app.register(createUser);
