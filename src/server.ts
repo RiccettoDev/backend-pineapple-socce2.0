@@ -5,7 +5,7 @@ import {
 } from 'fastify-type-provider-zod';
 
 // @ts-ignore
-import cors from 'fastify-cors'; // Importe o módulo fastify-cors sem especificar tipos
+import cors from 'fastify/cors'; // Importe o módulo fastify-cors sem especificar tipos
 
 import { createUser } from './routes/create-user';
 import { listUsers } from './routes/list-user';
