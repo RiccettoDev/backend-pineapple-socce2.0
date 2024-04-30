@@ -27,7 +27,7 @@ const start = async () => {
     await app.register(listUsers);
     await app.register(getUserById);
 
-    await app.listen({ port: 3333 }).then(() => {
+    await app.listen({ port: 3333, host: '91.108.126.64' }).then(() => {
       console.log("Runing API PineappleSoccer!");
     });
   } catch (error) {
