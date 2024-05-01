@@ -19,7 +19,7 @@ const start = async () => {
 
     // Registre o plugin CORS com opções
     await app.register(cors, {
-      origin: 'https://frontend-pineapple-soccer2-0.vercel.app',
+      origin: '*',
       methods: ['GET', 'POST', 'PUT', 'DELETE'] // Adicione métodos permitidos se necessário
     });
 
