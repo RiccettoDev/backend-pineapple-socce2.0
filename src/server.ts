@@ -9,6 +9,7 @@ import cors from '@fastify/cors'; // Caminho de importação correto com verific
 import { createUser } from './routes/create-user';
 import { listUsers } from './routes/list-user';
 import { getUserById } from './routes/get-user-by-id';
+import { updateUser } from './routes/update-user';
 
 const app = fastify({ logger: true });
 
@@ -26,6 +27,7 @@ const start = async () => {
     await app.register(createUser);
     await app.register(listUsers);
     await app.register(getUserById);
+    await app.register(updateUser)
 
     await app.listen({ port: 3333, host: '91.108.126.64' }).then(() => {
       console.log("Runing API PineappleSoccer!");
